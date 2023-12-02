@@ -18,6 +18,7 @@ def is_game_possible(game, red, green, blue):
                 current_green = int(count)
             elif color == 'blue':
                 current_blue = int(count)
+                
             if current_red > red or current_green > green or current_blue > blue:
                 return False
 
