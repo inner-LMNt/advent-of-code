@@ -66,14 +66,6 @@ with open(file_path, "r") as f:
             line = f.readline().split()
 
     f.close()   
-
-new_seeds = []
-for i in range(len(seeds)):
-    if i%2 == 1:
-        continue
-
-    for j in range(int(seeds[i+1])):
-        new_seeds.append(int(seeds[i]) + j)
     
 def update_seed(up_seed, map_list):
     for map in map_list:
@@ -81,14 +73,15 @@ def update_seed(up_seed, map_list):
             return int(map[0]) + up_seed - int(map[1])
     return up_seed
 
-for seed in new_seeds:
+minimum = 999999999999
+for seed in range(int(seeds[0])+49100000, int(seeds[0]) + 49120000):
     up_seed = update_seed(
         update_seed(
             update_seed(
                 update_seed(
                     update_seed(
                         update_seed(
-                            update_seed(int(seed), seed_to_soil), 
+                            update_seed(seed, seed_to_soil), 
                         soil_to_fertilizer),
                     fertilizer_to_water),
                 water_to_light),
@@ -96,6 +89,7 @@ for seed in new_seeds:
         temperature_to_humidity),
     humidity_to_location)
 
-    locations.append(up_seed)
+    print("New Seed:", up_seed)
+    minimum = min(up_seed, minimum)
 
-print("Min:", min(locations))
+print("Min:", minimum)
