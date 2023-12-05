@@ -1,3 +1,3 @@
 # [https://adventofcode.com](https://adventofcode.com)
 
-My solutions. Not optimized, but they work.
+My solutions. Highly unoptimized, but they work.
