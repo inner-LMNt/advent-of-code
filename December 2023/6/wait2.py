@@ -1,0 +1,1 @@
+# The same code as `wait1.py`, just edit `wait.txt`
