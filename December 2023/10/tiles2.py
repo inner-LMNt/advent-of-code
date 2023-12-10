@@ -7,18 +7,18 @@ def enclosed(grid, start_row, start_col, visited):
     stack = [(start_row, start_col)]
 
     directions = [(0,1),(1,0),(0,-1),(-1,0)]
-    valid = ["-7J", "|LJ", "-FL", "|F7"]
-    Sdirections = []
-    Sdirs = []
+    valid = ["J7-", "JL|", "FL-", "F7|"]
+    s_directions = []
+    s_dirs = []
     for i in range(4):
         pos = directions[i]
         new_row = start_row + pos[0]
         new_col = start_col + pos[1]
         if is_valid(new_row, new_col) and grid[new_row][new_col] in valid[i]:
-            Sdirections.append([new_row, new_col])
-            Sdirs.append(i)
+            s_directions.append([new_row, new_col])
+            s_dirs.append(i)
 
-    Svalid = 3 in Sdirs
+    s_valid = 3 in s_dirs
 
     while stack:
         row, col = stack.pop()
@@ -43,7 +43,7 @@ def enclosed(grid, start_row, start_col, visited):
         elif current == 'F':
             valid_neighbors = [(row+1, col), (row, col+1)]
         elif current == 'S':
-            valid_neighbors = Sdirections
+            valid_neighbors = s_directions
 
         for neighbor_row, neighbor_col in valid_neighbors:
             stack.append((neighbor_row, neighbor_col))
@@ -54,10 +54,11 @@ def enclosed(grid, start_row, start_col, visited):
         encl = False
         for j in range(width):
             if visited[i][j]:
-                if grid[i][j] in "|JL" or (grid[i][j]=="S" and Svalid): 
+                if grid[i][j] in "|F7" or (grid[i][j] == "S" and s_valid): 
                     encl = not encl
             else:
                 count += encl
+
     return count
 
 if __name__ == '__main__':
