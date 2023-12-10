@@ -7,7 +7,7 @@ def loop(grid, start_row, start_col, visited):
     stack = [(start_row, start_col)]
 
     directions = [(0,1),(1,0),(0,-1),(-1,0)]
-    valid = ["-7J", "|LJ", "-FL", "|F7"]
+    valid = ["J7-", "JL|", "FL-", "F7|"]
     Sdirections = []
     for i in range(4):
         pos = directions[i]
