@@ -1,64 +1,62 @@
-def solution1():
-    def empty_row(row):
-        for i in range(len(row)):
-            if row[i] == '#':
+def solution(data):
+    def empty_row(i):
+        for j in range(len(data[0])):
+            if data[i][j] == '#':
                 return False
         return True
     
-    def empty_col(col):
-        for i in range(len(col)):
-            if col[i] == '#':
+    def empty_col(i):
+        for line in data:
+            if line[i] == '#':
                 return False
         return True
     
     empty_rows = []
+    empty_cols = []
+
     for i in range(len(data)):
-        if empty_row(data[i]):
+        if empty_row(i):
             empty_rows.append(i)
 
-    empty_cols = []
     for i in range(len(data[0])):
-        col = [data[j][i] for j in range(len(data))]
-        if empty_col(col):
+        if empty_col(i):
             empty_cols.append(i)
 
     galaxies = []
+    
     for i in range(len(data)):
-        for j in range(len(data[0])):
+        for j in range(len(data)):
             if data[i][j] == '#':
-                galaxies.append((i, j))
+                galaxies.append((i,j))
 
     expansion = 1
-
-    ans = 0
+    count = 0
 
     for i, (row, col) in enumerate(galaxies):
-        for j in range(i, len(galaxies)):
-            row2, col2 = galaxies[j]
-            distance = abs(row2 - row) + abs(col2 - col)
+        for j in range(i):
+            new_row = galaxies[j][0]
+            new_col = galaxies[j][1]
+            distance = abs(row - new_row) + abs(col - new_col)
 
             for empty in empty_rows:
-                if min(row, row2) <= empty <= max(row, row2):
+                if min(row, new_row) < empty < max(row, new_row):
                     distance += expansion
-
+            
             for empty in empty_cols:
-                if min(col, col2) <= empty <= max(col, col2):
+                if min(col, new_col) < empty < max(col, new_col):
                     distance += expansion
+            
+            count += distance
 
-            ans += distance
-
-    print(ans)
-
-
+    print(count)
 
 if __name__ == '__main__':
-    file_path = '0.txt'
+    file_path = 'galaxy.txt'
 
     data = []
-    with open(file_path, 'r') as f:
-        lines = f.readlines()
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
         for line in lines:
-            line = line.strip()
-            data.append(line)
-
-    solution1()
+            data.append(line.strip())
+    
+    solution(data)
