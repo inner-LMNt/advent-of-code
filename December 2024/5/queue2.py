@@ -13,7 +13,6 @@ def solve(rules, updates):
     for u in updates:
         valid = is_valid(u)
         if not valid:
-            # Create permutations of u until it is valid. When this is so, add the middle element to the result.
             while not valid:
                 valid = is_valid(u)
             result += int(u[len(u)//2])
