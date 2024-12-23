@@ -27,4 +27,4 @@ if __name__ == '__main__':
         for line in file:
             data.append(line.strip())
 
-    print(solve(data))
+    print(solve(data))  # am,bc,cz,dc,gy,hk,li,qf,th,tj,wf,xk,xo
