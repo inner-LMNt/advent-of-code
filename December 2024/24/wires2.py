@@ -79,6 +79,7 @@ def solve(data):
 
     # Problematic z outputs: z09, z13, z19, z33
 
+    # https://colab.research.google.com/drive/1ymSU3tbkpG-C9-M6Dcwa5AF1g5pyN6eB?usp=sharing
     # After taking a look at tree_graph.png, I manually searched around these z nodes for the pairs to swap.
     # Each part of the graph is essentially a full adder circuit, just look around for any discrepancies.
 
