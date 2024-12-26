@@ -40,4 +40,4 @@ if __name__ == '__main__':
     with open(file, 'r') as file:
         data = file.read().split('\n\n')
 
-    print(solve(data))  # 24
+    print(solve(data))  # 2933
